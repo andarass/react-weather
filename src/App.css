@@ -5,38 +5,142 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* ---- Weather minimal styles ---- */
+.page.weather {
+  min-height: 100dvh;
+  background: #f8fafc;
+  color: #0f172a;
+  padding: 32px 16px;
+  box-sizing: border-box;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.page.weather .container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.page.weather h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.weather-form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 16px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 20px;
+}
+
+.weather-form .input {
+  flex: 1;
+}
+
+.button {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.button--primary {
+  background: #4f46e5;
+  color: #fff;
+}
+.button--primary:hover {
+  background: #4338ca;
+}
+
+.muted {
+  color: #6b7280;
+  text-align: center;
+}
+
+.weather-card {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 16px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+}
+
+@media (max-width: 640px) {
+  .weather-card {
+    grid-template-columns: 1fr;
   }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.wc-left .city {
+  font-size: 22px;
+  font-weight: 700;
 }
 
-.card {
-  padding: 2em;
+.temp {
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1;
+  margin: 6px 0 8px;
 }
 
-.read-the-docs {
-  color: #888;
+.desc {
+  font-size: 16px;
+  color: #475569;
+  text-transform: capitalize; /* biar "broken clouds" jadi Capitalize */
+}
+
+.wc-right {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.icon {
+  width: 80px;
+  height: 80px;
+}
+
+.meta {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #334155;
+}
+.meta li {
+  padding: 6px 0;
+  border-bottom: 1px dashed #e5e7eb;
+}
+.meta li:last-child {
+  border-bottom: none;
+}
+
+/* Reuse dari app-mu sebelumnya (kalau belum ada) */
+.input {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  color: #334155;
+  outline: none;
+}
+.input:focus {
+  border-color: #6366f1;
+}
+
+.empty {
+  text-align: center;
+  color: #64748b;
+  background: #fff;
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 16px;
 }
