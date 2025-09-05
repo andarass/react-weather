@@ -15,7 +15,7 @@
 }
 
 .page.weather .container {
-  max-width: 800px;
+  width: 500px;
   margin: 0 auto;
 }
 
@@ -143,4 +143,64 @@
   border: 1px dashed #cbd5e1;
   border-radius: 12px;
   padding: 16px;
+}
+
+/* ---- Dark Mode ---- */
+.page.weather.dark {
+  background: #0f172a;
+  color: #f1f5f9;
+}
+
+.page.weather.dark .card,
+.page.weather.dark .weather-card,
+.page.weather.dark .weather-form {
+  background: #1e293b;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+.page.weather.dark .input {
+  background: #334155;
+  border-color: #475569;
+  color: #f1f5f9;
+}
+
+.page.weather.dark .input:focus {
+  border-color: #818cf8;
+}
+
+.page.weather.dark .button--primary {
+  background: #6366f1;
+}
+.page.weather.dark .button--primary:hover {
+  background: #4f46e5;
+}
+
+.page.weather.dark .empty {
+  background: #1e293b;
+  border-color: #475569;
+  color: #cbd5e1;
+}
+
+.page.weather.dark .meta li {
+  border-bottom: 1px dashed #475569;
+}
+
+/* Toggle button area */
+.theme-toggle {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+.theme-toggle button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: inherit;
+}
+.theme-toggle button:hover {
+  background: rgba(148, 163, 184, 0.15);
 }

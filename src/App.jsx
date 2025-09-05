@@ -10,11 +10,11 @@ function App() {
   const [data, setData] = useState(null);
   const [status, setStatus] = useState("idle"); // idle | loading | done | error
   const [error, setError] = useState("");
+  const [darkMode, setDarkMode] = useState(false);
 
   async function fetchWeather(e) {
     e.preventDefault();
-    const q = city.trim();
-    if (!q) return;
+    if (!city.trim()) return;
 
     setStatus("loading");
     setError("");
@@ -22,16 +22,15 @@ function App() {
 
     try {
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
-        q
+        city
       )}&appid=${API_KEY}&units=metric&lang=id`;
 
       const res = await fetch(url);
       const json = await res.json();
-
-      // OWM kadang kirim json.cod berupa string, kadang number—amanin dua-duanya
       const cod = Number(json.cod);
+
       if (!res.ok || cod !== 200) {
-        throw new Error(json.message || "Gagal mengambil cuaca");
+        throw new Error(json.message || "Gagal ambil data cuaca");
       }
 
       setData(json);
@@ -43,9 +42,16 @@ function App() {
   }
 
   return (
-    <div className="page weather">
+    <div className={`page weather ${darkMode ? "dark" : ""}`}>
       <div className="container">
-        <h1>React Weather</h1>
+        {/* 🔘 Toggle dark mode */}
+        <div className="theme-toggle">
+          <button onClick={() => setDarkMode((d) => !d)}>
+            {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
+          </button>
+        </div>
+
+        <h1>Weather App</h1>
 
         {/* Form cari kota */}
         <form onSubmit={fetchWeather} className="card weather-form">
@@ -58,7 +64,7 @@ function App() {
           <button className="button button--primary">Cari</button>
         </form>
 
-        {status === "loading" && <p className="muted">Memuat data cuaca…</p>}
+        {status === "loading" && <p className="muted">Memuat data…</p>}
         {status === "error" && <p className="empty">Error: {error}</p>}
 
         {status === "done" && data && (
